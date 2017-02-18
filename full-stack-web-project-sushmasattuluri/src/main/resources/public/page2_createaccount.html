@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Creating an Account </title>
+		<link rel="stylesheet" type="text/css" href="stylesheets/stylesheet_4.css">
+
+		<!-- <script src="javascript/jspracticeformvalidation.js"></script> -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+			<!-- <script type="text/javascript" src="javascript/registration.js"></script> -->
+
+		<script>
+		function pregister() {
+
+			var firstname = $("input#firstname").val();
+			//var lastname = $("input#lastname").val();
+			// var username = $("input#username").val();
+			// var password = $("input#password").val();
+			// var confpassword = $("input#confpassword").val();
+			// var email = $("input#email").val();
+		  // alert("XXXXXXX successfully accepted"+ firstname + "  " + lastname+ "  " + username+ "  " + password + "  "+ email);
+		 //var obj = JSON.stringify("firstname":firstname);
+
+		  $.ajax({
+		                   contentType:'application/json',
+		                   url: "/api/register/"+firstname,
+		                   type: "get",
+		                   datatype: "json",
+		                   data: firstname,
+		                   success: function(data) {
+		                       alert("Welcome! You have registered successfully!");
+		                      // window.location.href='/index.html';
+		 											console.log(data);
+		                   }
+		               });
+		}
+
+		  </script>
+
+	</head>
+	<body>
+		<header>
+			<h1><img src="logo.jpg" alt="HTML5 Icon">Vista</h1>
+		</header>
+
+		<nav>
+			<ul>
+				<li><a href="index.html">Home</a></li>
+				<li><a href="">About Us</a></li>
+				<li><a href="page4_contactus.html">Contact Us</a></li>
+
+				</ul>
+		</nav>
+
+		<p>Create an account</p>
+		<form>
+				<table class="t2">
+					<tr>
+            <td>First name:</td>
+  					<td><input type="text" id="firstname" name="firstname" size="30" required/></td>
+					</tr>
+					<tr>
+              <td>Last name:</td>
+    					<td><input type="text" id="lastname" name="lastname" size="30" required/></td>
+					</tr>
+					<tr>
+            <td>Username(6-8 characters):</td>
+						<td><input type="text" id="username" name="username" size="30" required/></td>
+					</tr>
+
+					<tr>
+						<td>Password:</td>
+						<td><input type="password" id="password" name="password" size="30" required/></td>
+
+					</tr>
+					<tr>
+              <td>Confirm Password:</td>
+              <td><input type="password" id="confpassword" name="confpassword" size="30" required/></td>
+						</tr>
+
+					<tr>
+                <td>Email:</td>
+      					<td><input type="text" id="email" name="email" size="30" required/></td>
+					</tr>
+					<!-- <tr>
+                <td>Address :</td>
+        				<td><input type="text" id="address" name="address" size="30" required/></td>
+					</tr>
+					<tr>
+                <td>Phone no :</td>
+                <td><input type="number" id="phone" name="phone" size="30" required/></td>
+					</tr>
+					<tr>
+                <td>Employment Status :</td>
+                <td><input type="text" id="status" name="status" size="30" required/></td>
+					</tr>
+					<tr>
+                <td>Occupation :</td>
+                <td><input type="text" id="occupation" name="occupation" size="30" required/></td>
+					</tr>
+					<tr>
+              	<td>Annual Household Income:</td>
+                <td><input type="number" id="income" name="income" size="30" required/></td>
+					</tr>
+					<tr>
+                <td>Estimated Investable Assets :</td>
+                <td><input type="number" id="estassets" name="estassets" size="30" required/></td>
+					</tr>-->
+					<tr>
+			         <td><input type="reset" id="reset" class="button4" name="reset"></td>
+               <td><input type="submit" id="submit" class="button5" name="submit" value="Create Account"  onclick= "pregister()"></td>
+							<!-- <input id="regis-login-button" type="button" value="submit" onclick="register()">  -->
+					</tr>
+
+			 </table>
+		</form>
+
+
+	<footer>
+	Copyright © vistainvestments.com
+	</footer>
+
+</body>
+</html>

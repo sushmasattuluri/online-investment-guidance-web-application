@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>GetJson_and_XML</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet_4.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
+        <script>
+      function getJson() {
+          $.ajax({
+            url : "/stocks",
+            
+            success : function(result) {
+              var stocks = JSON.parse(result);
+              for ( var i = 0; i < stocks.length; i++) {
+                $("div.stocks").append(
+                  '<p class="stocknames" id="' + stocks[i].id + '">' + stocks[i].name + '</p>' + '<br/>'
+                );
+              }
+            }
+          });
+        }
+        function getXml () {
+		        $.ajax({
+			           url : "/about",
+                 type : "get",
+                 success : function(result) {
+                   person = result.getElementsByTagName("Branch");
+                   $("div.about").append(
+	        	           '<p>FirstName:'+person[0].childNodes[0].firstChild.nodeValue+'</p>'+
+	        	           '<p>LastName:'+person[0].childNodes[1].firstChild.nodeValue+'</p>'+
+	        	           '<p>Street:'+person[0].childNodes[2].firstChild.nodeValue+'</p>'+
+                       '<p>Country:'+person[0].childNodes[3].firstChild.nodeValue+'</p>'+
+                       '<p>State:'+person[0].childNodes[4].firstChild.nodeValue+'</p>'+
+                       '<p>City:'+person[0].childNodes[5].firstChild.nodeValue+'</p>'+
+                       '<p>Status:'+person[0].childNodes[6].firstChild.nodeValue+'</p>'+
+                       '<p>Phone:'+person[0].childNodes[7].firstChild.nodeValue+'</p>'+
+                       '<p>Email:'+person[0].childNodes[8].firstChild.nodeValue+'</p>'
+
+                     );
+                   }
+                 });
+               }
+        </script>
+    </head>
+    <body>
+      <header>
+        <h1><img src="logo.jpg" alt="HTML5 Icon">Vista</h1>
+      </header>
+
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="">About Us</a></li>
+          <li><a href="page4_contactus.html">Contact Us</a></li>
+
+          </ul>
+      </nav>
+
+       <input type="button" value="Stocks selected" onclick="getJson()">
+        <div class="stocks"></div>
+        <input type="button" value="Personal Details" onclick="getXml()">
+        <div class="about"></div>
+
+        <footer>
+      	Copyright © vistainvestments.com
+      	</footer>
+
+    </body>
+</html>
